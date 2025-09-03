@@ -1,6 +1,31 @@
 <script setup>
 import HeaderComponent from '../components/HeaderComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
+import { ref } from 'vue';
+
+ const connect = ref([
+        {
+          id: 1,
+          emogi: "fa-brands fa-instagram",
+          description:"Instagram",
+        },
+        {
+          id: 2,
+          emogi: "fa-brands fa-behance",
+          description:"Behance",
+        },
+        {
+          id: 3,
+          emogi: "fa-brands fa-dribbble",
+          description:"Dribble",
+        },
+        {
+          id: 4,
+          emogi: "fa-brands fa-linkedin-in",
+          description:"LinkedIn",
+        },
+      ]);
+
 </script>
 <template>
   <HeaderComponent />
@@ -16,16 +41,8 @@ import FooterComponent from '../components/FooterComponent.vue';
 
         <section class="connect">
             <ul class="white-itens">
-                <li>
-                    <a href="#"><span class="fa-brands fa-instagram"></span>Instagram</a>
-
-                </li>
-                <li>
-                    <a href="#"><span class="fa-brands fa-behance"></span> Behance</a>    
-                </li>
-                <li><a href="#"><span class="fa-brands fa-dribbble"></span>Dribble</a>
-                </li>
-                <li><a href="#"><span class="fa-brands fa-linkedin-in"></span>LinkedIn</a>
+                <li v-for="conectar in connect">
+                     <a href="#"><span :class="conectar.emogi"></span>{{ conectar.description }}</a>
                 </li>
             </ul>
         </section>

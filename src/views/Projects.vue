@@ -1,6 +1,47 @@
 <script setup>
 import HeaderComponent from '../components/HeaderComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
+import { ref } from 'vue';
+
+ const projects = ref([
+        {
+          id: 1,
+          title: "EcoCharge",
+          description:"Estações de recarga para veículos elétricos abastecidas com energia solar.",
+          image: null,
+        },
+        {
+          id: 2,
+          title: "FinWise",
+          description:"Aplicativo de gestão financeira pessoal com análise de gastos e projeções automáticas.",
+          image: "finwise.png",
+        },
+        {
+          id: 3,
+          title: "SmartAgro",
+          description:"Sistema de monitoramento agrícola com sensores IoT para otimizar irrigação e produtividade.",
+          image: null,
+        },
+        {
+          id: 4,
+          title: "PicSphere",
+          description:"Rede social para compartilhamento de fotos com filtros e álbuns colaborativos.",
+          image: "picshere.png",
+        },
+        {
+          id: 5,
+          title: "HealthTrack",
+          description:"Aplicativo para acompanhamento de saúde e hábitos, integrando dados de wearables",
+          image: null,
+        },
+        {
+          id: 6,
+          title: "MentorHub",
+          description:"Plataforma de conexão entre mentores e mentorados com videochamadas integradas.",
+          image: "mentorhub.png",
+        },
+      ]);
+
 </script>
 <template>
   <HeaderComponent />
@@ -16,57 +57,15 @@ import FooterComponent from '../components/FooterComponent.vue';
         </p>
       </section>
 
-      <section class="projects">
+      <section class="projects"> 
         <ul class="white-itens">
-          <li>
-            <h3>EcoCharge</h3>
-            <p>
-              Estações de recarga para veículos elétricos abastecidas com
-              energia solar.
-            </p>
-          </li>
-          <li>
-            <h3>FinWise</h3>
-            <p>
-              Aplicativo de gestão financeira pessoal com análise de gastos e
-              projeções automáticas.
-            </p>
-            <p>
-              <img src="/images/finwise.png" alt="banner finwise" />
-            </p>
-          </li>
-          <li>
-            <h3>SmartAgro</h3>
-            <p>
-              Sistema de monitoramento agrícola com sensores IoT para otimizar
-              irrigação e produtividade.
-            </p>
-          </li>
-          <li>
-            <h3>PicSphere</h3>
-            <p>
-              Rede social para compartilhamento de fotos com filtros e álbuns
-              colaborativos.
-            </p>
-            <p>
-              <img src="/images/picshere.png" alt="baner picshere" />
-            </p>
-          </li>
-          <li>
-            <h3>HealthTrack</h3>
-            <p>
-              Aplicativo para acompanhamento de saúde e hábitos, integrando
-              dados de wearables
-            </p>
-          </li>
-          <li>
-            <h3>MentorHub</h3>
-            <p>
-              Plataforma de conexão entre mentores e mentorados com
-              videochamadas integradas.
-            </p>
-            <p>
-              <img src="/images/mentorhub.png" alt="banner mentorhub" />
+          <li v-for="projeto in projects">
+            <h3>{{ projeto.title }}</h3>
+
+            <p>{{ projeto.description }}</p>
+
+            <p v-if="projeto.image != null">
+              <img :src="'/images/'+ projeto.image" alt="">
             </p>
           </li>
         </ul>

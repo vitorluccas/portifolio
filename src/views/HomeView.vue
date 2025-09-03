@@ -1,8 +1,49 @@
 <script setup>
 import HeaderComponent from '../components/HeaderComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
-</script>
+import { ref } from 'vue';
 
+
+    const cards = ref([
+        {
+          id: 1,
+          title: "ShopEase",
+          image: "shopease.png",
+          emogi: null,
+          description: null,
+          category: ['Mobile', 'Application', 'E-commerce'],
+          
+        },
+        {
+          id: 2,
+          title: "Insightly",
+          image: null,
+          emogi: "💡",
+          description:"Developed a SaaS-based analytics dashboard for Insightly, focusing on providing actionable insights through a user-centric design. The dashboard improved data accessibility and was adopted by 80% of users within the first three months.",
+          category: ['Web 3.0', 'HTML', 'Dashboard'],
+
+        },
+        {
+          id: 3,
+          title: "ShopEase",
+          image: "shopease.png",
+          emogi: null,
+          description: null,
+          category: ['Mobile', 'Application', 'E-commerce'],
+        },
+        {
+          id: 4,
+          title: "Insightly",
+          image: null,
+          emogi: "💡",
+          description:"Developed a SaaS-based analytics dashboard for Insightly, focusing on providing actionable insights through a user-centric design. The dashboard improved data accessibility and was adopted by 80% of users within the first three months.",
+          category: ['Web 3.0', 'HTML', 'Dashboard'],
+        },
+        
+      ]);
+
+</script>
+    
 <template>
   <HeaderComponent />
   <main>
@@ -17,6 +58,26 @@ import FooterComponent from '../components/FooterComponent.vue';
         </section>
 
         <section class="cards">
+            <ul>
+                <li v-for="card in cards">
+                    <h3>{{ card.title }}</h3>
+                    <p v-if="card.image != null">
+                        <img :src="'/images/' + card.image" alt="">
+                    </p>
+                    <p v-if="card.emogi != null">
+                        {{ card.emogi }}
+                    </p>
+                    <p v-if="card.description != null">
+                        {{ card.description }}
+                    </p>
+                    <ul>
+                        <li v-for="categoria in card.category">
+                            {{ categoria}}
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
             <ul>
                 <li>
                     <h3>ShopEase</h3>
